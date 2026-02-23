@@ -1,0 +1,365 @@
+﻿:root {
+  --bg: #0f1115;
+  --surface: #171a22;
+  --card: #1c2030;
+  --text: #f8f8fb;
+  --muted: #b7bfcc;
+  --accent: #ffb347;
+  --accent-2: #5ef2c9;
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  background: radial-gradient(circle at top, #1a2033, #0f1115 55%);
+  color: var(--text);
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 20px 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, rgba(255, 179, 71, 0.15), rgba(94, 242, 201, 0.12));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 20px 24px;
+  box-shadow: var(--shadow);
+}
+
+.label {
+  font-family: "Rubik Mono One", sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin: 0 0 6px;
+  color: var(--accent-2);
+}
+
+.brand h1 {
+  margin: 0 0 8px;
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+.contacts {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.avito {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.avito:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.avito img {
+  width: 80px;
+  height: auto;
+  display: block;
+}
+
+.phone {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 999px;
+}
+
+.phone a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  background: #0d0f14;
+}
+
+.slides {
+  position: relative;
+}
+
+.slide {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: none;
+  cursor: zoom-in;
+}
+
+.slide.active {
+  display: block;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+.card-body {
+  padding: 16px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.card-body h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.price {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.toggle {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.description {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+  display: none;
+}
+
+.description.is-open {
+  display: block;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 6, 8, 0.88);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 82vh;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.lightbox-arrow.left {
+  left: 30px;
+}
+
+.lightbox-arrow.right {
+  right: 30px;
+}
+
+@media (max-width: 700px) {
+  .page {
+    padding: 18px 14px 54px;
+  }
+
+  .top {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .brand h1 {
+    font-size: 24px;
+  }
+
+  .card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contacts {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .avito {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .avito img {
+    width: 70px;
+  }
+
+  .phone {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slide {
+    height: 200px;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+
+  .toggle {
+    width: 100%;
+    text-align: center;
+  }
+
+  .lightbox-close {
+    top: 16px;
+    right: 16px;
+  }
+
+  .lightbox-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .lightbox-arrow.left {
+    left: 16px;
+  }
+
+  .lightbox-arrow.right {
+    right: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand h1 {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .card-body h2 {
+    font-size: 16px;
+  }
+
+  .slide {
+    height: 180px;
+  }
+}
